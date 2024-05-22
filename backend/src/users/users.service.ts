@@ -14,28 +14,23 @@ export class UsersService {
     posts: {
       select: {
         id: true,
-        createdById: true,
         post: true,
       },
     },
   };
 
   async create(user: CreateUserDto): Promise<IUser> {
-    const newUser = await this.userRepository.create({
+    return await this.userRepository.create({
       data: user,
       select: this.userSelectProperties,
     });
-
-    return newUser;
   }
 
   async findOne(email: string): Promise<IUser> {
-    const user = await this.userRepository.findUniqueOrThrow({
+    return await this.userRepository.findUniqueOrThrow({
       where: { email },
       select: this.userSelectProperties,
     });
-
-    return user;
   }
 }
 

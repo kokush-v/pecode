@@ -30,7 +30,7 @@ export class AuthService {
       password: bcrypt.hashSync(user.password, 10),
     });
 
-    const payload = { username: newUser.name, sub: newUser.id };
+    const payload = { name: newUser.name, id: newUser.id };
 
     return {
       data: newUser,
@@ -41,7 +41,7 @@ export class AuthService {
   async login(user: LoginUserDto) {
     const validUser = await this.validateUser(user);
 
-    const payload = { username: validUser.name, sub: validUser.id };
+    const payload = { name: validUser.name, id: validUser.id };
 
     return {
       data: validUser,
