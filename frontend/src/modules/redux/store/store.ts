@@ -3,24 +3,20 @@ import { authApi } from "../api/auth";
 import { userApi } from "../api/user";
 import { usersReducer } from "./userSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { postApi } from "../api/posts";
+import { postsReducer } from "./postSlice";
 
 export const store = configureStore({
 	reducer: {
 		[authApi.reducerPath]: authApi.reducer,
 		[userApi.reducerPath]: userApi.reducer,
-		// Connect the PostApi reducer to the store
-		// [postApi.reducerPath]: postApi.reducer,
+		[postApi.reducerPath]: postApi.reducer,
 		userState: usersReducer,
-		// postState: postsReducer,
+		postState: postsReducer,
 	},
 	devTools: true,
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({}).concat([
-			authApi.middleware,
-			userApi.middleware,
-			// Add the PostApi middleware to the store
-			// postApi.middleware,
-		]),
+		getDefaultMiddleware({}).concat([authApi.middleware, userApi.middleware, postApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

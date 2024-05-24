@@ -1,28 +1,26 @@
-import React, { useEffect } from "react";
-import { useFormik } from "formik";
 import {
-	VStack,
-	FormControl,
-	Input,
-	Button,
 	Box,
-	FormErrorMessage,
-	useToast,
+	Button,
 	Flex,
+	FormControl,
+	FormErrorMessage,
 	FormLabel,
-	Heading,
 	HStack,
+	Heading,
+	Input,
+	VStack,
+	useToast,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
-import { AxiosError } from "axios";
-import { miniSerializeError } from "@reduxjs/toolkit";
-import { AuthData, LoginAuthData, RegisterAuthData } from "../../../types/auth/auth.types";
-import { authSchema } from "./validation.schema";
-import { ERRORS, QUERY_KEYS, ROUTER_KEYS } from "../../../consts/app-keys.const";
-import { showErrorToast, showErrorToastWithText, showSuccesToast } from "../../form.toasts";
+import { useFormik } from "formik";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { userSelector } from "../../user/user.selector";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation, useRegisterUserMutation } from "../../../../redux/api/auth";
+import { ROUTER_KEYS } from "../../../consts/app-keys.const";
+import { LoginAuthData, RegisterAuthData } from "../../../types/auth/auth.types";
+import { showErrorToastWithText, showSuccesToast } from "../../form.toasts";
+import { userSelector } from "../../user/user.selector";
+import { authSchema } from "./validation.schema";
 
 /* eslint-disable */
 

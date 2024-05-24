@@ -18,9 +18,8 @@ export const BACKEND_KEYS = {
 	SERVER_URL: "http://127.0.0.1:3001",
 	API_VERSION: "/api/v1",
 	POSTS: {
-		ROOT: "post",
-		CREATE: "post/create",
-		REPLY: (postId?: string) => `post/reply/${postId}`,
+		ROOT: "posts",
+		CREATE: "posts/create",
 	},
 	AUTH: {
 		REG: "auth/register",

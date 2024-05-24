@@ -1,14 +1,14 @@
-import { Button, HStack, Heading, Skeleton } from "@chakra-ui/react";
+import { Button, HStack, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 
-import { QUERY_KEYS, ROUTER_KEYS, STORAGE_KEYS } from "../../../consts/app-keys.const";
-import { useDispatch, useSelector } from "react-redux";
-import { userSelector } from "../user.selector";
+import { useDispatch } from "react-redux";
+import { useGetUserQuery } from "../../../../redux/api/user";
 import { logout } from "../../../../redux/store/userSlice";
+import { ROUTER_KEYS, STORAGE_KEYS } from "../../../consts/app-keys.const";
 
 export const UserHeader = () => {
 	const navigate = useNavigate();
-	const user = useSelector(userSelector);
+	const { data: user } = useGetUserQuery(null);
 	const dispatch = useDispatch();
 
 	/* eslint-disable */
